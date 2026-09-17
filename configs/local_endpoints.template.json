@@ -1,0 +1,19 @@
+{
+  "credential_env_files": [
+    "/absolute/path/to/cellaudit.env"
+  ],
+  "endpoints": {
+    "deepseek_v4_flash": {
+      "base_url": "https://api.example.org/v1",
+      "api_key_env": "CELLAUDIT_DEEPSEEK_API_KEY"
+    },
+    "gemini_compatible": {
+      "base_url": "https://api.example.org/v1",
+      "api_key_env": "CELLAUDIT_GEMINI_API_KEY"
+    },
+    "qwen35_4b": {
+      "base_url": "http://127.0.0.1:8000/v1",
+      "api_key_env": "CELLAUDIT_QWEN_API_KEY"
+    }
+  }
+}

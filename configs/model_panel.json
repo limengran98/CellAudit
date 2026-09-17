@@ -1,0 +1,30 @@
+{
+  "deepseek_v4_flash": {
+    "kind": "openai_compatible",
+    "model": "deepseek-v4-flash",
+    "local_endpoint_id": "deepseek_v4_flash",
+    "base_url_env": "CELLAUDIT_DEEPSEEK_BASE_URL",
+    "api_key_env": "CELLAUDIT_DEEPSEEK_API_KEY",
+    "stream": true,
+    "role": "registered_discovery_backend"
+  },
+  "gemini": {
+    "kind": "openai_compatible",
+    "model": "gemini-3-pro-preview",
+    "local_endpoint_id": "gemini_compatible",
+    "base_url_env": "CELLAUDIT_GEMINI_BASE_URL",
+    "api_key_env": "CELLAUDIT_GEMINI_API_KEY",
+    "reasoning_effort": "low",
+    "stream": false,
+    "role": "optional_discovery_backend"
+  },
+  "qwen35_4b": {
+    "kind": "local_or_openai_compatible",
+    "model": "Qwen/Qwen3.5-4B",
+    "local_endpoint_id": "qwen35_4b",
+    "base_url_env": "CELLAUDIT_QWEN_BASE_URL",
+    "api_key_env": "CELLAUDIT_QWEN_API_KEY",
+    "stream": false,
+    "role": "optional_open_weight_backend"
+  }
+}

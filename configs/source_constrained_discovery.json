@@ -1,0 +1,9 @@
+{
+  "schema_version": "cellscientist_source_constrained_discovery",
+  "runtime_config": "configs/joint_response_runtime.json",
+  "provider": {"model_panel": "configs/model_panel.json", "panel_key": "deepseek_v4_flash", "allow_fallback": false},
+  "search": {"candidate_budget_including_h0": 10, "temperature": 0.2, "max_output_tokens": 2400},
+  "controller": {"memory": "incumbent choices plus metric frontier plus parent-relative edit evidence", "feedback": ["Global PCC", "group-1 PCC", "group-2 PCC", "MSE", "weakest output group", "parent-relative delta", "attempted mechanisms"]},
+  "candidate_contract": {"llm_outputs": "design_card_only", "compiler_owns": ["source", "metadata", "shape_contract", "imports", "training_interface"], "forbidden": ["Fold-4 access", "Fold-5 access", "data/fold/evaluator modification", "per-target training"]},
+  "mechanism_contract": {"grouped_output_diagnostics": true, "parent_relative_evidence": true, "require_distinct_initial_fusions": true, "forbid_single_token_attention": true, "endpoint_heldout_behavioral_audit_required": true, "selection": "fold3_global_pcc_then_mse_then_block_lcb"}
+}

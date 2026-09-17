@@ -1,0 +1,6 @@
+{
+  "schema_version": "cellscientist_falsification_guided_discovery",
+  "provider": {"model_panel": "configs/model_panel.json", "panel_key": "deepseek_v4_flash", "allow_fallback": false},
+  "search": {"candidate_budget_including_anchor": 10, "temperature": 0.2, "max_output_tokens": 1800, "smoke_max_epochs": 3, "formal_max_epochs": 20},
+  "candidate_contract": {"llm_outputs": "semantic_design_card_only", "compiler_owns": ["model source", "shape contract", "context anchor", "optimizer", "folds", "counterfactual maps", "identifiability gates", "qualification", "Pareto scale calibration"], "selection": "qualified_then_Global_PCC_then_MSE", "fallback": "no_qualified_model"}
+}

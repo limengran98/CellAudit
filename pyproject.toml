@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cellaudit"
+version = "1.0.0"
+description = "Agentic perturbation-model discovery with deterministic source-grounded falsification"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "h5py>=3.8",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "rdkit>=2023.9",
+  "torch>=2.1"
+]
+
+[project.scripts]
+cellaudit = "cellaudit.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["cellaudit*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

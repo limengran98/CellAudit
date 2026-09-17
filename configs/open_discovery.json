@@ -1,0 +1,63 @@
+{
+  "schema_version": "cellscientist_open_discovery",
+  "runtime_config": "configs/joint_response_runtime.json",
+  "provider": {
+    "model_panel": "configs/model_panel.json",
+    "panel_key": "deepseek_v4_flash",
+    "allow_fallback": false
+  },
+  "search": {
+    "max_evaluated_candidates_including_h0": 10,
+    "max_repairs_per_candidate": 3,
+    "temperature": 0.2,
+    "max_output_tokens": 9000,
+    "selection_metric": "fold3_global_pcc_strict_improvement"
+  },
+  "controller": {
+    "policy": "incumbent-conditioned diagnostic revision with registered multimodal hypothesis seeds",
+    "history_window": 4,
+    "allowed_revision_scopes": [
+      "model_architecture",
+      "fusion",
+      "response_readout",
+      "loss",
+      "optimizer",
+      "scheduler"
+    ],
+    "design_agenda": [
+      "Instantiate one complete, falsifiable cross-modal perturbation-response hypothesis: encode control profile, chemical representation, and dose separately at a common hidden width; use chemical query with control key/value interaction plus dose residual and layer normalization; pass the fused state through a shared response program; predict the joint response; use CP/L1000 block-aware MSE weighting (0.4/0.6), AdamW, and cosine scheduling. Register chemical-attention use for independent source and behavioral testing.",
+      "Instantiate a compact featurewise conditional-fusion alternative: separate modality encoders, chemical-and-dose FiLM or gated modulation of the control program, a residual joint response network, and a block-aware response objective.",
+      "Instantiate a response-factorized alternative: modality-specific encoders, a learned cross-modal interaction, shared latent response program, and two block-aware output heads trained jointly without target-wise models.",
+      "Test a genuine multi-token cross-modal interaction or low-rank bilinear fusion with explicit dose conditioning; retain only a complete source-local model that respects the joint-output contract.",
+      "Test a structured multi-tower response model with residual capacity, normalization, dropout, AdamW, and an objective that balances correlation-sensitive and squared-error response fidelity when justified.",
+      "Test whether a compact conditional bottleneck or low-rank joint readout improves the L1000 block without sacrificing the Cell-Painting block; preserve all task semantics.",
+      "Using the Fold-3 history, synthesize only mutually compatible mechanisms from earlier attempts into one coherent model and avoid cosmetic rewrites.",
+      "Explore one complementary multimodal design that is materially distinct from previous source hashes, with explicit tensor-shape reasoning and registered metadata.",
+      "Make one final diagnosis-driven revision of the best incumbent; prioritize a complete, executable perturbation-response hypothesis over a hyperparameter-only change."
+    ],
+    "uses_external_candidates": false,
+    "uses_candidate_receipts": true
+  },
+  "candidate_contract": {
+    "candidate_source": "restricted_to_torch_math_typing_dataclasses_collections",
+    "candidate_config": "must_equal_registered_h0_training_configuration",
+    "forbidden_candidate_actions": [
+      "data_loading",
+      "preprocessing",
+      "fold_assignment",
+      "target_access_outside_folds_1_2_3",
+      "evaluator_or_metric_modification",
+      "per_target_training",
+      "network_or_filesystem_access"
+    ]
+  },
+  "artifact_policy": {
+    "save_decision_context": true,
+    "save_candidate_source": true,
+    "save_fold3_metrics": true,
+    "save_selected_checkpoint_per_evaluated_candidate": true,
+    "save_sanitized_failure_log": true,
+    "save_secret_safe_provider_usage": true,
+    "save_gpu_wall_seconds": true
+  }
+}

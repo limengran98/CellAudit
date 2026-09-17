@@ -1,0 +1,49 @@
+{
+  "schema_version": "cellscientist_falsification_guided_protocol",
+  "research_question": "Can discovery retain predictive utility while adding target-related information beyond a context-only anchor for each identifiable perturbation input?",
+  "data_boundary": {
+    "fit_folds": [1, 2],
+    "development_fold": 3,
+    "fold4_role": "endpoint-held-out behavioral audit",
+    "fold5_role": "endpoint-held-out final replication",
+    "fold5_opened": false
+  },
+  "model_contract": {
+    "prediction": "context_anchor(control) + centered_perturbation_residual(control, chemical, dose)",
+    "context_anchor": "trained first and then frozen",
+    "residual_initialization": "exactly zero so checkpoint zero reproduces the anchor",
+    "increment_scale_grid": [0.05, 0.1, 0.2, 0.35, 0.5, 0.75, 1.0],
+    "increment_scale_selection": "among development-eligible Fold-3 states, maximize Global PCC then minimize MSE",
+    "residual_constraint": "every residual output is multiplicatively gated by centered chemical or dose features and has no output bias",
+    "agent_may_change": ["centered perturbation fusion", "residual width", "residual readout", "residual objective"],
+    "agent_may_not_change": ["context anchor", "data", "folds", "normalization", "evaluator", "counterfactual maps", "qualification thresholds", "physical fit budget"]
+  },
+  "development_diagnostics": {
+    "chemical": "target-related loss increase under target-blind matched chemical replacement",
+    "dose": "target-related loss increase under a separated within-chemical observed-dose replacement when identifiable",
+    "dose_identifiability": {
+      "minimum_absolute_log10_delta": 0.1,
+      "minimum_fit_rows": 32,
+      "minimum_fit_chemicals": 8,
+      "minimum_development_rows": 32,
+      "minimum_development_chemicals": 8,
+      "failure_status": "not_identifiable"
+    },
+    "residual": "correlation between the learned increment and response remaining after the frozen context anchor",
+    "map_variation_reference": "candidate-local pairwise variation across independently frozen sham maps"
+  },
+  "qualification": {
+    "global_pcc_margin_below_anchor": 0.003,
+    "group_pcc_margin_below_anchor": 0.005,
+    "mse_margin_above_anchor": 0.0005,
+    "map_variation_quantile": 0.95,
+    "minimum_relative_target_loss_gain": 0.001,
+    "effect_interval": [0.025, 0.975],
+    "checkpoint_disposition": "one map-calibrated disposition per independently fitted trajectory endpoint",
+    "cohort_aggregation": "continuous effects and Q/U/I/N counts across ten trajectory endpoints; no cross-endpoint vote",
+    "required": ["prediction_noninferior", "chemical_gain_supported", "each_identifiable_additional_input_gain_supported"],
+    "unidentifiable_input_policy": "do not force behavioral dependence, do not claim support, and do not use the input to reject an otherwise qualified endpoint",
+    "fallback": "no_qualified_model"
+  },
+  "stopping_rule": "Freeze the registered endpoints before endpoint-held-out audit and open Fold 5 only after the audit protocol is fixed."
+}

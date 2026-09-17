@@ -1,0 +1,39 @@
+{
+  "schema_version": "cellscientist_joint_response_runtime_v1",
+  "tasks": [
+    "cpg036_cp_plate_control_context",
+    "cpg047_cp_plate_control_context"
+  ],
+  "fold_roles": {
+    "fit_folds": [1, 2],
+    "selection_fold": 3,
+    "withheld_folds": [4, 5]
+  },
+  "training": {
+    "seed": 20260804,
+    "max_epochs": 150,
+    "batch_size": 128,
+    "early_stopping_patience": 20,
+    "early_stopping_min_delta": 1e-06,
+    "gradient_clip_norm": 5.0,
+    "max_parameters": 20000000
+  },
+  "starting_candidates": {
+    "h0": {
+      "path": "assets/starting_candidates/initial_model.json",
+      "candidate_hash": "22784ed68656740c420a28e940d6c1faa25eb16350b0de2408221b6a905b8dd0"
+    }
+  },
+  "selection": {
+    "metric": "global_pcc",
+    "partition": "fold_3_only",
+    "checkpoint_rule": "strict_global_pcc_improvement"
+  },
+  "prohibited_actions": [
+    "fold4_target_access",
+    "fold5_target_access",
+    "per_target_model_training",
+    "data_or_fold_modification",
+    "evaluator_modification"
+  ]
+}

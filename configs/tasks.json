@@ -1,0 +1,148 @@
+{
+  "cpg036_cp_plate_control_context": {
+    "adapter": "cpg_replicate_profiles",
+    "allowed_target_modes": [
+      "absolute"
+    ],
+    "condition": "observed_same_plate_cell_painting_control_profile_plus_smiles_morgan2048_and_dose",
+    "condition_layout": {
+      "kind": "feature_prefix_plus_final_scalar",
+      "prefix_dim": 2048,
+      "scalar_position": "last",
+      "scalar_semantics": "log10_registered_perturbation_intensity"
+    },
+    "cpg": {
+      "cell_painting_metadata_columns": [],
+      "chemical_feature_dim": 2048,
+      "condition_encoder": "smiles_morgan_plus_dose",
+      "condition_metadata_source": "l1000",
+      "control_values": [
+        "control"
+      ],
+      "direction": "joint_from_condition_with_cp_control_context",
+      "dose_column": "pert_dose",
+      "join_columns": {
+        "cell_painting": "Metadata_Sample_Dose",
+        "l1000": "pert_sample_dose"
+      },
+      "l1000_exclude_columns": [
+        "id"
+      ],
+      "l1000_feature_end_before": "pert_id",
+      "l1000_metadata_columns": [
+        "CPD_SMILES",
+        "pert_dose",
+        "pert_id"
+      ],
+      "missing_control_policy": "drop",
+      "perturbation_columns": {
+        "cell_painting": "Metadata_pert_type",
+        "l1000": "pert_type"
+      },
+      "plate_columns": {
+        "cell_painting": "Metadata_Plate",
+        "l1000": "det_plate"
+      },
+      "response_transform": {
+        "cell_painting": "empirical_control_cdf_centered",
+        "l1000": "control_median_centered"
+      },
+      "smiles_column": "CPD_SMILES",
+      "split": {
+        "group_column": "CPD_SMILES",
+        "group_source": "l1000",
+        "kind": "murcko_scaffold"
+      },
+      "treatment_values": [
+        "trt"
+      ]
+    },
+    "default_test_fold": 5,
+    "family": "paired_multi_assay_response",
+    "metric": "global_pcc",
+    "path": "data/BBBC036/CellPainting/replicate_level_cp_normalized_variable_selected.csv.gz",
+    "source_paths": [
+      "data/BBBC036/CellPainting/replicate_level_cp_normalized_variable_selected.csv.gz",
+      "data/BBBC036/L1000/replicate_level_l1k.csv.gz"
+    ],
+    "sources": {
+      "cell_painting": "data/BBBC036/CellPainting/replicate_level_cp_normalized_variable_selected.csv.gz",
+      "l1000": "data/BBBC036/L1000/replicate_level_l1k.csv.gz"
+    },
+    "target": "joint_same_plate_control_rank_cell_painting_and_control_relative_l1000_profile",
+    "task_label": "BBBC036/U2OS, same-plate control-context Cell Painting and L1000 response from SMILES-dose"
+  },
+  "cpg047_cp_plate_control_context": {
+    "adapter": "cpg_replicate_profiles",
+    "allowed_target_modes": [
+      "absolute"
+    ],
+    "condition": "observed_same_plate_cell_painting_control_profile_plus_smiles_morgan2048_and_dose",
+    "condition_layout": {
+      "kind": "feature_prefix_plus_final_scalar",
+      "prefix_dim": 2048,
+      "scalar_position": "last",
+      "scalar_semantics": "log10_registered_perturbation_intensity"
+    },
+    "cpg": {
+      "cell_painting_metadata_columns": [],
+      "chemical_feature_dim": 2048,
+      "condition_encoder": "smiles_morgan_plus_dose",
+      "condition_metadata_source": "l1000",
+      "control_values": [
+        "control"
+      ],
+      "direction": "joint_from_condition_with_cp_control_context",
+      "dose_column": "pert_dose",
+      "join_columns": {
+        "cell_painting": "Metadata_Sample_Dose",
+        "l1000": "pert_sample_dose"
+      },
+      "l1000_exclude_columns": [
+        "id"
+      ],
+      "l1000_feature_end_before": "pert_id",
+      "l1000_metadata_columns": [
+        "CPD_SMILES",
+        "pert_dose",
+        "pert_id"
+      ],
+      "missing_control_policy": "drop",
+      "perturbation_columns": {
+        "cell_painting": "Metadata_pert_type",
+        "l1000": "pert_type"
+      },
+      "plate_columns": {
+        "cell_painting": "Metadata_Plate",
+        "l1000": "det_plate"
+      },
+      "response_transform": {
+        "cell_painting": "empirical_control_cdf_centered",
+        "l1000": "control_median_centered"
+      },
+      "smiles_column": "CPD_SMILES",
+      "split": {
+        "group_column": "CPD_SMILES",
+        "group_source": "l1000",
+        "kind": "murcko_scaffold"
+      },
+      "treatment_values": [
+        "trt"
+      ]
+    },
+    "default_test_fold": 5,
+    "family": "paired_multi_assay_response",
+    "metric": "global_pcc",
+    "path": "data/BBBC047/CellPainting/replicate_level_cp_normalized_variable_selected.csv.gz",
+    "source_paths": [
+      "data/BBBC047/CellPainting/replicate_level_cp_normalized_variable_selected.csv.gz",
+      "data/BBBC047/L1000/replicate_level_l1k.csv.gz"
+    ],
+    "sources": {
+      "cell_painting": "data/BBBC047/CellPainting/replicate_level_cp_normalized_variable_selected.csv.gz",
+      "l1000": "data/BBBC047/L1000/replicate_level_l1k.csv.gz"
+    },
+    "target": "joint_same_plate_control_rank_cell_painting_and_control_relative_l1000_profile",
+    "task_label": "BBBC047/U2OS, same-plate control-context Cell Painting and L1000 response from SMILES-dose"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "candidate_hash": "22784ed68656740c420a28e940d6c1faa25eb16350b0de2408221b6a905b8dd0",
+  "candidate_metadata": {
+    "candidate_name": "bbbc036_concat_mlp_h0",
+    "change_summary": "Initial reproducible concatenation-MLP candidate.",
+    "component_symbols": {
+      "objective.response_loss": [
+        "compute_loss"
+      ],
+      "optimization.optimizer": [
+        "build_optimizer"
+      ],
+      "perturbation.joint_input_fusion": [
+        "ConcatenationFusion"
+      ],
+      "response.joint_readout": [
+        "JointResponseReadout"
+      ],
+      "response.shared_program": [
+        "SharedResponseProgram"
+      ]
+    },
+    "schema_version": "cellscientist_open_candidate_v1",
+    "semantic_components": [
+      "perturbation.joint_input_fusion",
+      "response.shared_program",
+      "response.joint_readout",
+      "objective.response_loss",
+      "optimization.optimizer"
+    ]
+  },
+  "candidate_metadata_hash": "60a83f0078d1f66e505c9c8aefab68f426da3ee051346a1412b8d1f28313784d",
+  "candidate_source": "\"\"\"Minimal reproducible starting candidate for open-ended BBBC036 discovery.\n\nThis is intentionally a weak, conventional starting point.  It concatenates\nthe protected executor inputs and predicts the registered joint CP/L1000\nresponse with one MLP.  It does not pre-install multi-tower fusion,\nassay-specific heads, mixed PCC--MSE objectives, AdamW, or a scheduler; those\nremain hypotheses that the discovery process must propose and test.\n\"\"\"\n\nimport torch\nfrom torch import nn\n\n\ndef candidate_metadata():\n    return {\n        \"schema_version\": \"cellscientist_open_candidate_v1\",\n        \"candidate_name\": \"bbbc036_concat_mlp_h0\",\n        \"semantic_components\": [\n            \"perturbation.joint_input_fusion\",\n            \"response.shared_program\",\n            \"response.joint_readout\",\n            \"objective.response_loss\",\n            \"optimization.optimizer\",\n        ],\n        \"component_symbols\": {\n            \"perturbation.joint_input_fusion\": [\"ConcatenationFusion\"],\n            \"response.shared_program\": [\"SharedResponseProgram\"],\n            \"response.joint_readout\": [\"JointResponseReadout\"],\n            \"objective.response_loss\": [\"compute_loss\"],\n            \"optimization.optimizer\": [\"build_optimizer\"],\n        },\n        \"change_summary\": \"Initial reproducible concatenation-MLP candidate.\",\n    }\n\n\nclass ConcatenationFusion(nn.Module):\n    def forward(self, pre, chemical, dose):\n        return torch.cat((pre, chemical, dose), dim=1)\n\n\nclass SharedResponseProgram(nn.Module):\n    def __init__(self, input_dim, hidden_dim):\n        super().__init__()\n        self.network = nn.Sequential(\n            nn.Linear(input_dim, hidden_dim),\n            nn.ReLU(),\n            nn.Linear(hidden_dim, hidden_dim),\n            nn.ReLU(),\n        )\n\n    def forward(self, fused):\n        return self.network(fused)\n\n\nclass JointResponseReadout(nn.Module):\n    def __init__(self, hidden_dim, target_dim):\n        super().__init__()\n        self.projection = nn.Linear(hidden_dim, target_dim)\n\n    def forward(self, hidden):\n        return self.projection(hidden)\n\n\nclass ConcatenationMLP(nn.Module):\n    def __init__(self, task_spec):\n        super().__init__()\n        input_dim = (\n            int(task_spec[\"context_dim\"])\n            + int(task_spec[\"chemical_dim\"])\n            + int(task_spec[\"dose_dim\"])\n        )\n        target_dim = int(task_spec[\"target_dim\"])\n        hidden_dim = 256\n        self.fusion = ConcatenationFusion()\n        self.response_program = SharedResponseProgram(input_dim, hidden_dim)\n        self.readout = JointResponseReadout(hidden_dim, target_dim)\n\n    def forward(self, pre, chemical, dose):\n        fused = self.fusion(pre, chemical, dose)\n        hidden = self.response_program(fused)\n        return self.readout(hidden)\n\n\ndef build_model(task_spec):\n    return ConcatenationMLP(task_spec)\n\n\ndef compute_loss(prediction, target, state):\n    del state\n    return torch.nn.functional.mse_loss(prediction, target)\n\n\ndef build_optimizer(model, state):\n    del state\n    return torch.optim.Adam(model.parameters(), lr=1e-3)\n\n\ndef build_scheduler(optimizer, state):\n    del optimizer, state\n    return None\n",
+  "parent_candidate_hash": null,
+  "source_hash": "206130baa148e1343d180c9a2a4bfc4443c62115d5460d70bf5d35a2b202aedb",
+  "training_config": {
+    "batch_size": 128,
+    "gradient_clip_norm": 5.0,
+    "max_epochs": 150,
+    "min_delta": 1e-06,
+    "patience": 20
+  },
+  "training_config_hash": "e63f4ab379b7d1c7a1bf9ce83457c2149b00c931d38ff0606e3a151b0e5bd3ec"
+}
