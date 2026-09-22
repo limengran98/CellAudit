@@ -3,9 +3,19 @@
 <div align="center">
 
 <h1>CellAudit</h1>
-<h3>Discover cellular-response predictors, then test what inputs they use</h3>
+<h3>Discover, Falsify, Revise</h3>
+
+<p><b>Auditing Input-Use Claims from Source Code to Predictive Contribution in Agent-Discovered Cell Models</b></p>
+
+<p>Mengran Li · Bo Li · Chengyang Zhang · Yang Yan · Jinfeng Xu · Zhenchao Tang</p>
 
 <p><b>Separate predictive performance, source-level input paths, fitted-model dependence, and target-relevant contribution.</b></p>
+
+<p>
+  <a href="https://cellaudit-research.phuonganh49123.chatgpt.site"><img alt="Project page" src="https://img.shields.io/badge/Project_page-176B73?style=for-the-badge"></a>
+  <a href="https://cellaudit-research.phuonganh49123.chatgpt.site/assets/CellAudit.pdf"><img alt="Read the paper PDF" src="https://img.shields.io/badge/Paper_PDF-132D48?style=for-the-badge"></a>
+  <a href="docs/REPRODUCIBILITY.md"><img alt="Reproduction guide" src="https://img.shields.io/badge/Reproduction_guide-235ACF?style=for-the-badge"></a>
+</p>
 
 <p>
   <a href="pyproject.toml"><img alt="Python 3.10 or later" src="https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white"></a>
@@ -20,7 +30,9 @@
   <a href="#discovery"><b>Discovery</b></a> ·
   <a href="#audit"><b>Audit</b></a> ·
   <a href="#outputs"><b>Outputs</b></a> ·
-  <a href="#extend"><b>Extend</b></a>
+  <a href="#extend"><b>Extend</b></a> ·
+  <a href="#project-page"><b>Website source</b></a> ·
+  <a href="#citation"><b>Citation</b></a>
 </p>
 
 </div>
@@ -43,8 +55,15 @@ that training makes use of it, and input sensitivity does not by itself imply
 predictive benefit.
 
 <p align="center">
-  <img src="docs/overview.svg" alt="CellAudit discovery, freezing, source checking, behavioral intervention, and held-out replication workflow" width="920">
+  <a href="https://cellaudit-research.phuonganh49123.chatgpt.site">
+    <img src="project-page/dist/assets/Figure1-overview.webp" alt="CellAudit framework: discover and freeze a predictor, check its source-level input paths, test fitted-model dependence, and measure target-relevant predictive contribution" width="1100">
+  </a>
 </p>
+
+Explore the [project page](https://cellaudit-research.phuonganh49123.chatgpt.site)
+for the paper's figures and results, or read the
+[method contract](docs/METHOD_CONTRACT.md) and
+[reproduction guide](docs/REPRODUCIBILITY.md) to work through the implementation.
 
 <a id="quick-start"></a>
 
@@ -295,12 +314,42 @@ python -m cellaudit --help
 ## Repository map
 
 ```text
-cellaudit/               discovery, compilation, training, and audit runtime
+cellaudit/                   discovery, compilation, training, and audit runtime
 configs/                     tasks, providers, search settings, and fixed protocol
 assets/starting_candidates/  replayable starting model
 docs/                        method contract and reproducibility guide
 scripts/                     end-to-end command wrappers
 tests/                       contract and integration regression tests
+project-page/dist/           public project page, figures, and paper PDF
+```
+
+<a id="project-page"></a>
+
+## Project page
+
+The [public project page](https://cellaudit-research.phuonganh49123.chatgpt.site)
+and this repository link to each other. Its static HTML, styles, scripts, and
+paper assets are included in [`project-page/dist/`](project-page/dist/).
+
+To preview the page locally from the repository root:
+
+```bash
+python -m http.server 4173 --directory project-page/dist
+```
+
+Open [localhost:4173](http://localhost:4173). The page runs as a static site.
+
+<a id="citation"></a>
+
+## Citation
+
+```bibtex
+@misc{li2026cellaudit,
+  title = {Discover, Falsify, Revise: Auditing Input-Use Claims from Source Code to Predictive Contribution in Agent-Discovered Cell Models},
+  author = {Li, Mengran and Li, Bo and Zhang, Chengyang and Yan, Yang and Xu, Jinfeng and Tang, Zhenchao},
+  year = {2026},
+  url = {https://cellaudit-research.phuonganh49123.chatgpt.site}
+}
 ```
 
 ## License
