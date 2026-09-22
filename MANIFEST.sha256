@@ -1,6 +1,7 @@
+5e302c9a1b0dae2456a0bfbda73a73f9e6f864c57342014713fc7d4c0e690099  ./.github/workflows/project-page.yml
 c677a2fed043ae690327dffd5ba0ce73acdd4cea8d6ceb7e5030130eacbeed05  ./.gitignore
 eb32f606e424c7805550e71d693ecedd2f41e587a938814eb4e5b750d2a9835f  ./LICENSE
-0c3e58b7c44dd434cdddb5b0dc11b9f949b67c436af0e9bb1abc1cc0b4ac36d7  ./README.md
+db3fc734bb9957e1537efbddb69ec651719db982a0fd35341490767cd44fcedf  ./README.md
 d6dd23a76dc932a503f5bdccc833305ed65671d2eb6f49b9b704021b292a4a50  ./assets/starting_candidates/initial_model.json
 7dd0590154b9ebb27b12cb3c8752514595170dc308782020c1461e0c6b79a392  ./cellaudit/__init__.py
 0f7d54f3fbb1f79a85eb8110f11793db99da6f3c61ee979de5abe9a1b5f3fdb3  ./cellaudit/__main__.py
@@ -50,9 +51,10 @@ f0e1c00259843bf53c4165575f5ee096a72175267ed15b0eb9a7a7253f69424c  ./configs/sour
 a8162772b94bbc5c236334fc57f28ce5e3b8f4a77eb26f76ee6424526a259845  ./docs/METHOD_CONTRACT.md
 77e68fc993e709b5f38ab45702fbb14a295b74fb45d53d800935c0cd89f4c898  ./docs/REPRODUCIBILITY.md
 37f3514200dd23dd6e1115c0b282f613734111123b35aa365c33b63c6a03baea  ./docs/overview.svg
-04ea80137f3c8ea89315522f071fb0574e6e880641caa1b979cb2545ae0ad706  ./project-page/README.md
+314398e8973bd47bbce79d24c2f6a7f4a01ba979770859c7f43a8a6d8536b886  ./project-page/README.md
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./project-page/dist/.nojekyll
 19f083245485cab9fe7b90f8b6582e48bf871b1440bb8317edd9bbe9d0593eda  ./project-page/dist/app.js
-81c93d585fcb9bac3316719343bdaa89aa88b93ef396b97d39668ebe54c8b268  ./project-page/dist/assets/CellAudit.pdf
+8e6739deb775d6ee35dd5f93348867c027a8a9e8ef95c58632d7ff97de909d02  ./project-page/dist/assets/CellAudit.pdf
 5d0544ef08734dba7688f031b235fa1e350620a20436a261ce3f5036f04bf248  ./project-page/dist/assets/Figure1-overview.webp
 e46067f459c01a11c0df7f62caadf2670177d8099b052fe67fad6cfc0e6e064a  ./project-page/dist/assets/Figure2-candidate-audit.webp
 afb6a1914dd719f0493db1b5ae1d8fc9bf1b5647c978d5b9998225467eac2c20  ./project-page/dist/assets/Figure3-audit-feedback.webp
@@ -60,7 +62,7 @@ afb6a1914dd719f0493db1b5ae1d8fc9bf1b5647c978d5b9998225467eac2c20  ./project-page
 5d173ccb47a2f7f084bf06931721d43752a9731827a09b367fe84c67d798af12  ./project-page/dist/assets/Figure6-bbbc-audit.webp
 087b6eea2369b5bb9db6966ca3ec3d8d4f2b85a0260d1976a7709293dec8bff7  ./project-page/dist/assets/Figure7-revision-case.webp
 789c2a0ee7b2a605b1620e60f64672ddfee9eafcdea55ed8d3c8237fbcd4528d  ./project-page/dist/assets/results.json
-464594376526f145090dc1b0a31a7bfaeb16b42a6ba2d989a9c719b77f574558  ./project-page/dist/index.html
+d6e6c9b5a107f5e7c2020db42e12d480634978d22f4d38b588fa9df9c0bc9d47  ./project-page/dist/index.html
 d884b359d3866cfae486f33aa669962b207b93e9fdb6cb0fffd1f427cd53a11a  ./project-page/dist/styles.css
 4ed0debe62fb561dae8e7fc802320f7b32a28457e10aec3b65a3d12c8ae143a4  ./pyproject.toml
 b57fbfb7145f754790c4fb2bc6d84dab39954f27a84f6bb50c45affd312edb4d  ./scripts/run_audit.sh

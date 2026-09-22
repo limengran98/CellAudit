@@ -12,8 +12,8 @@
 <p><b>Separate predictive performance, source-level input paths, fitted-model dependence, and target-relevant contribution.</b></p>
 
 <p>
-  <a href="https://cellaudit-research.phuonganh49123.chatgpt.site"><img alt="Project page" src="https://img.shields.io/badge/Project_page-176B73?style=for-the-badge"></a>
-  <a href="https://cellaudit-research.phuonganh49123.chatgpt.site/assets/CellAudit.pdf"><img alt="Read the paper PDF" src="https://img.shields.io/badge/Paper_PDF-132D48?style=for-the-badge"></a>
+  <a href="https://limengran98.github.io/CellAudit"><img alt="Project page" src="https://img.shields.io/badge/Project_page-176B73?style=for-the-badge"></a>
+  <a href="https://limengran98.github.io/CellAudit/assets/CellAudit.pdf"><img alt="Read the paper PDF" src="https://img.shields.io/badge/Paper_PDF-132D48?style=for-the-badge"></a>
   <a href="docs/REPRODUCIBILITY.md"><img alt="Reproduction guide" src="https://img.shields.io/badge/Reproduction_guide-235ACF?style=for-the-badge"></a>
 </p>
 
@@ -55,12 +55,12 @@ that training makes use of it, and input sensitivity does not by itself imply
 predictive benefit.
 
 <p align="center">
-  <a href="https://cellaudit-research.phuonganh49123.chatgpt.site">
+  <a href="https://limengran98.github.io/CellAudit">
     <img src="project-page/dist/assets/Figure1-overview.webp" alt="CellAudit framework: discover and freeze a predictor, check its source-level input paths, test fitted-model dependence, and measure target-relevant predictive contribution" width="1100">
   </a>
 </p>
 
-Explore the [project page](https://cellaudit-research.phuonganh49123.chatgpt.site)
+Explore the [project page](https://limengran98.github.io/CellAudit)
 for the paper's figures and results, or read the
 [method contract](docs/METHOD_CONTRACT.md) and
 [reproduction guide](docs/REPRODUCIBILITY.md) to work through the implementation.
@@ -327,7 +327,7 @@ project-page/dist/           public project page, figures, and paper PDF
 
 ## Project page
 
-The [public project page](https://cellaudit-research.phuonganh49123.chatgpt.site)
+The [public project page](https://limengran98.github.io/CellAudit)
 and this repository link to each other. Its static HTML, styles, scripts, and
 paper assets are included in [`project-page/dist/`](project-page/dist/).
 
@@ -348,7 +348,7 @@ Open [localhost:4173](http://localhost:4173). The page runs as a static site.
   title = {Discover, Falsify, Revise: Auditing Input-Use Claims from Source Code to Predictive Contribution in Agent-Discovered Cell Models},
   author = {Li, Mengran and Li, Bo and Zhang, Chengyang and Yan, Yang and Xu, Jinfeng and Tang, Zhenchao},
   year = {2026},
-  url = {https://cellaudit-research.phuonganh49123.chatgpt.site}
+  url = {https://limengran98.github.io/CellAudit}
 }
 ```
 
