@@ -13,7 +13,7 @@
 
 <p>
   <a href="https://limengran98.github.io/CellAudit"><img alt="Project page" src="https://img.shields.io/badge/Project_page-176B73?style=for-the-badge"></a>
-  <a href="https://limengran98.github.io/CellAudit/assets/CellAudit.pdf"><img alt="Read the paper PDF" src="https://img.shields.io/badge/Paper_PDF-132D48?style=for-the-badge"></a>
+  <a href="https://arxiv.org/abs/2609.27234"><img alt="Read the arXiv preprint" src="https://img.shields.io/badge/arXiv_preprint-132D48?style=for-the-badge"></a>
   <a href="docs/REPRODUCIBILITY.md"><img alt="Reproduction guide" src="https://img.shields.io/badge/Reproduction_guide-235ACF?style=for-the-badge"></a>
 </p>
 
@@ -343,12 +343,17 @@ Open [localhost:4173](http://localhost:4173). The page runs as a static site.
 
 ## Citation
 
+Please cite the [arXiv preprint](https://arxiv.org/abs/2609.27234):
+
 ```bibtex
 @misc{li2026cellaudit,
   title = {Discover, Falsify, Revise: Auditing Input-Use Claims from Source Code to Predictive Contribution in Agent-Discovered Cell Models},
   author = {Li, Mengran and Li, Bo and Zhang, Chengyang and Yan, Yang and Xu, Jinfeng and Tang, Zhenchao},
   year = {2026},
-  url = {https://limengran98.github.io/CellAudit}
+  eprint = {2609.27234},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2609.27234}
 }
 ```
 
